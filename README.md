@@ -35,7 +35,7 @@ After labeling the images, use the [xml_to_csv.py][6] script that converts the X
 Tensorflow Object Detection API uses the TFRecord file format, you need to convert our dataset to this file format. There are several options to generate the TFRecord files. Either you have a dataset that has a similar structure to the PASCAL VOC dataset or the Oxford Pet dataset, then they have ready-made scripts for this case (see create_pascal_tf_record.py and create_pet_tfd_record.py). If you don’t have one of those structures you need to write your own script to generate the TFRecords. I used a custom made script for this!
 
 After labeling the images using LabelImg, labeled xml files will be generated. Run the [xml_to_csv.py][7], record down the number of Test Cases printed out in the console. Then generate TF Records for both training and testing using [generate_tfrecord.py][8].
-```python
+```
 To generate train.record file use the code as shown below:
 python generate_tfrecord.py --csv_input=data/train_labels.csv  --output_path=data/train.record --image_dir=images
 To generate test.record file use the code as shown below:
@@ -136,7 +136,7 @@ num_readers: 1}
 ```
 
 Now, copy [train.py][10] from models/research/object-detection directory of the TensorFlow object detection repo.
-```python
+```
 python train.py --logtostderr --train_dir=train/ --pipeline_config_path=faster_rcnn_inception_v2_coco.config
 ```
 If everything goes right, you will see the loss at a particular step.
@@ -157,11 +157,11 @@ eval_config: {
 ```
 
 You need to copy the [eval.py][12] file from the repo and evaluate using the following command:
-```python
+```
 python eval.py --logtostderr --pipeline_config_path=data/faster_rcnn_inception_v2_coco.config --checkpoint_dir=train/ --eval_dir=eval/
 ```
 This will save the eval results in eval/ directory. To visualize the results we will use tensorboard.
-```python
+```
 #To visualize the eval results
 tensorboard --logdir=eval/
 #TO visualize the training results
@@ -173,7 +173,7 @@ Open the link in a browser and under Images tag you can see the results.
 ## Exporting the model
 
 Copy the [exporter.py][13] and [export_inference_graph.py][14] from the object detection repo and run the following command, the number of steps depends on your configuration:
-```python
+```
 python export_inference_graph.py --pipeline_config_path=faster_rcnn_inception_v2_coco.config --output_directory=output --trained_checkpoint_prefix=train/model.ckpt-1000
 ```
 
