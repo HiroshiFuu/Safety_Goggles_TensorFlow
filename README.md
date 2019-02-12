@@ -179,7 +179,7 @@ Open the link in a browser and under Images tag you can see the results.
 
 Copy the [exporter.py][13] and [export_inference_graph.py][14] from the object detection repo and run the following command, the number of steps depends on your configuration:
 ```
-python export_inference_graph.py --pipeline_config_path=faster_rcnn_inception_v2_coco.config --output_directory=output --trained_checkpoint_prefix=train/model.ckpt-1000
+python export_inference_graph.py --pipeline_config_path=faster_rcnn_inception_v2_coco.config --output_directory=output --trained_checkpoint_prefix=train/model.ckpt-[NUMBER_OF_STEPS]
 ```
 
 ## Deployment of the model
